@@ -1,4 +1,4 @@
-package com.gplio.cola
+package cola
 
 import android.annotation.SuppressLint
 import android.os.IBinder
@@ -19,7 +19,8 @@ object CustomServiceManager {
 
     private fun getService(service: String, type: String): IInterface {
         val binder = methodGetService.invoke(null, service) as IBinder
-        val methodAsInterface = Class.forName("$type\$Stub").getMethod("asInterface", IBinder::class.java)
+        val methodAsInterface =
+            Class.forName("$type\$Stub").getMethod("asInterface", IBinder::class.java)
         return methodAsInterface.invoke(null, binder) as IInterface
     }
 }

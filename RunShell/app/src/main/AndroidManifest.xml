@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="com.gplio.cola">
+
+    <application
+        tools:targetApi="31"
+        tools:ignore="MissingApplicationIcon" />
+
+</manifest>

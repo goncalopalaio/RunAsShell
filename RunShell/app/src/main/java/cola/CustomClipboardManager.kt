@@ -1,4 +1,4 @@
-package com.gplio.cola
+package cola
 
 import android.content.ClipData
 import android.os.IInterface
