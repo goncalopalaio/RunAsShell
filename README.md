@@ -2,6 +2,8 @@
 
 Suite of programs meant to be run in an Android device through app_process / shell.
 
+Currently there's a single program:
+
 ## Cola
 
 Sets text to your android device clipboard.
