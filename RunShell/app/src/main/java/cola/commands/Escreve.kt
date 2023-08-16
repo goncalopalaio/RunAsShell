@@ -8,7 +8,7 @@ import cola.CustomServiceManager
 import cola.InjectedKeyEvent
 
 private const val DEFAULT_DISPLAY_ID = 0
-private const val DEFAULT_INJECT_MODE = 0
+private const val DEFAULT_INJECT_MODE = 0 // android.os.InputEventInjectionSync.NONE
 
 object Escreve {
 

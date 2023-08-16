@@ -1,12 +1,18 @@
 package cola
 
-import android.os.IInterface
 import android.view.InputEvent
 import android.view.KeyEvent
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 
+/**
+ * Exposes some of the methods from [https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/hardware/input/InputManager.java]
+ */
 class CustomInputManager(private val manager: Any) {
+
+    /**
+     * [https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/hardware/input/InputManager.java;bpv=1;bpt=1;l=1152]
+     */
     private val methodInjectInputEvent: Method by lazy {
         manager.javaClass.getMethod(
             "injectInputEvent",
