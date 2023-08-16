@@ -21,10 +21,10 @@ Consult the corresponding key codes here: https://cs.android.com/android/platfor
 
 ```bash
 # Injects KEYCODE_2 ; KEYCODE_0; KEYCODE_5
-adb push RunShell/app/build/intermediates/apk/debug/run-as-shell.apk /data/local/tmp/ \
+adb push run-as-shell.apk /data/local/tmp/ \
 && adb shell CLASSPATH=/data/local/tmp/run-as-shell.apk app_process / Runner escreve "9-7-12"
 
 # Injects KEYCODE_2 ; Sleep for 200ms ; KEYCODE_0; Sleep for 200ms ; KEYCODE_5
-adb push RunShell/app/build/intermediates/apk/debug/run-as-shell.apk /data/local/tmp/ \
+adb push run-as-shell.apk /data/local/tmp/ \
 && adb shell CLASSPATH=/data/local/tmp/run-as-shell.apk app_process / Runner escreve "9-SLEEP200-7-SLEEP200-12"
 ```
