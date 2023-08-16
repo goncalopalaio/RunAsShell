@@ -6,7 +6,7 @@ Currently there's two programs:
 
 ## Cola
 
-Sets text to your android device clipboard.
+Sets text to your android device clipboard and pastes it into the focused field.
 
 ```bash
 adb push run-as-shell.apk /data/local/tmp/ \
