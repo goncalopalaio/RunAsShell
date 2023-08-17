@@ -1,5 +1,5 @@
-import cola.commands.Cola
-import cola.commands.Escreve
+import cola.commands.SetClipboard
+import cola.commands.InjectKeyEvents
 
 private const val ERROR_NO_PROGRAM = 1000
 private const val ERROR_UNKNOWN_PROGRAM = 1001
@@ -16,8 +16,8 @@ fun start(args: Array<String>): Int {
     val arguments = args.drop(1)
 
     return when (program) {
-        "cola" -> Cola.run(arguments)
-        "escreve" -> Escreve.run(arguments)
+        "clipboard" -> SetClipboard.run(arguments)
+        "input" -> InjectKeyEvents.run(arguments)
         "help" -> runHelp()
         else -> {
             println("Unknown program -> $program")
@@ -30,9 +30,9 @@ fun start(args: Array<String>): Int {
 private fun runHelp(): Int {
     println("Runner v0.2")
     println()
-    println(Cola.createHelp())
+    println(SetClipboard.createHelp())
     println()
-    println(Escreve.createHelp())
+    println(InjectKeyEvents.createHelp())
     println()
     return 0
 }

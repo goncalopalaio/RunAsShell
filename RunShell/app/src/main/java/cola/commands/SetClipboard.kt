@@ -2,7 +2,7 @@ package cola.commands
 
 import cola.CustomServiceManager
 
-object Cola {
+object SetClipboard {
     fun run(args: List<String>): Int {
         val text = args.getOrElse(0) { "" }
         println("Cola -> $text")
