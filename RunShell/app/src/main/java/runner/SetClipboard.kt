@@ -1,6 +1,6 @@
-package cola.commands
+package runner
 
-import cola.CustomServiceManager
+import runner.managers.CustomServiceManager
 
 object SetClipboard {
     fun run(args: List<String>): Int {

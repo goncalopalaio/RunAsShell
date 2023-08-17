@@ -1,7 +1,9 @@
-package cola
+package runner.managers
 
 import android.content.ClipData
 import android.os.IInterface
+import runner.data.PACKAGE_NAME
+import runner.data.ROOT_UID
 import java.lang.Exception
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method

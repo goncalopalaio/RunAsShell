@@ -1,11 +1,11 @@
-package cola.commands
+package runner
 
 import android.os.SystemClock
 import android.view.InputDevice
 import android.view.KeyCharacterMap
 import android.view.KeyEvent
-import cola.CustomServiceManager
-import cola.InjectedKeyEvent
+import runner.data.InjectedKeyEvent
+import runner.managers.CustomServiceManager
 
 private const val DEFAULT_DISPLAY_ID = 0
 private const val DEFAULT_INJECT_MODE = 0 // android.os.InputEventInjectionSync.NONE

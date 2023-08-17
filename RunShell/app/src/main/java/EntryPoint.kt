@@ -1,5 +1,5 @@
-import cola.commands.SetClipboard
-import cola.commands.InjectKeyEvents
+import runner.InjectKeyEvents
+import runner.SetClipboard
 
 private const val ERROR_NO_PROGRAM = 1000
 private const val ERROR_UNKNOWN_PROGRAM = 1001

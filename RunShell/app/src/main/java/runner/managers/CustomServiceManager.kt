@@ -1,6 +1,7 @@
-package cola
+package runner.managers
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.hardware.input.InputManager
 import android.os.IBinder
 import android.os.IInterface
@@ -28,6 +29,11 @@ object CustomServiceManager {
         val getInstanceMethod = clazz.getDeclaredMethod("getInstance")
         val instance = getInstanceMethod.invoke(null) as InputManager
         CustomInputManager(instance)
+    }
+
+    val windowManager: CustomWindowManager by lazy {
+        val clipboard = getService("window", "android.view.IWindowManager")
+        CustomWindowManager(clipboard)
     }
 
     private fun getService(service: String, type: String): IInterface {

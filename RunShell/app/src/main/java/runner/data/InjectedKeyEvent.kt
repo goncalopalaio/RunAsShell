@@ -1,4 +1,4 @@
-package cola
+package runner.data
 
 sealed class InjectedKeyEvent {
     data class KeyCode(val keyCode: Int) : InjectedKeyEvent()
