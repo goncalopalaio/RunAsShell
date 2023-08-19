@@ -12,5 +12,6 @@ public class Runner {
 
     public static void main(String... args) {
         EntryPointKt.start(args);
+        System.out.println("exiting");
     }
 }

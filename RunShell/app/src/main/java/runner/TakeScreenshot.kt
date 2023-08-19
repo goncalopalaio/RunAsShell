@@ -5,8 +5,10 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import android.graphics.Rect
 import android.os.Environment
+import android.view.PixelCopy
 import java.io.File
 import kotlin.system.measureTimeMillis
+
 
 object TakeScreenshot {
 
@@ -18,7 +20,8 @@ object TakeScreenshot {
         println("bitmap=$bitmap, width=${bitmap?.width}, height=${bitmap?.height}, screenshotTimeMs=$screenshotTimeMs")
         if (bitmap == null) return 1
 
-        val file = File(Environment.getExternalStorageDirectory(), "${System.currentTimeMillis()}.jpg")
+        val file =
+            File(Environment.getExternalStorageDirectory(), "${System.currentTimeMillis()}.jpg")
 
         val writeTimeMs = measureTimeMillis {
             writeBitmap(bitmap, Bitmap.CompressFormat.JPEG, 50, file)
@@ -36,18 +39,31 @@ object TakeScreenshot {
 
     @Throws(Exception::class)
     fun screenshot(): Bitmap? {
-        val size: Point = getDisplaySize()
+        val size: Point = getDisplaySize() // TODO This is returning zeros.
         println("size=$size")
 
         // https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/view/SurfaceControl.java;l=859;drc=ebd11defff68784e4c049e8ef7668f4dc007e2ce;bpv=1;bpt=1?q=SurfaceControl
 
+        /**
+         * From: https://android.googlesource.com/platform/frameworks/base/+/bcf48ed/core/java/android/view/SurfaceControl.java
+         * CAVEAT: Versions of screenshot that return a {@link Bitmap} can
+         * be extremely slow; avoid use unless absolutely necessary; prefer
+         * the versions that use a {@link Surface} instead, such as
+         * {@link SurfaceControl#screenshot(IBinder, Surface)}.
+         */
+        // TODO replace screenshot call?
+        // TODO try PixelCopy.request(surfaceView, bitmap, listener, Handler())
+
         val clazz = Class.forName("android.view.SurfaceControl")
         println("class=$clazz")
 
+
+        /*
         val methods = clazz.methods
         for (m in methods) {
             println("m=$m")
         }
+        */
 
         val method = clazz.getMethod(
             "screenshot",
