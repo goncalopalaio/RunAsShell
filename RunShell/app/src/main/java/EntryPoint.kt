@@ -1,5 +1,6 @@
 import runner.InjectKeyEvents
 import runner.IsInteractive
+import runner.Reboot
 import runner.SetClipboard
 import runner.TakeScreenshot
 
@@ -21,7 +22,8 @@ fun start(args: Array<String>): Int {
         "clipboard" -> SetClipboard.run(arguments)
         "input" -> InjectKeyEvents.run(arguments)
         "screenshot" -> TakeScreenshot.run(arguments)
-        "interactive" -> IsInteractive.run(arguments)
+        "interactive" -> IsInteractive.run()
+        "reboot" -> Reboot.run(arguments)
         "help" -> runHelp()
         else -> {
             println("Unknown program -> $program")
@@ -33,14 +35,14 @@ fun start(args: Array<String>): Int {
 
 private fun runHelp(): Int {
     println("Runner v0.2")
-    println()
-    println(SetClipboard.createHelp())
-    println()
-    println(InjectKeyEvents.createHelp())
-    println()
-    println(TakeScreenshot.createHelp())
-    println()
-    println(IsInteractive.createHelp())
-    println()
+    val helpInfo = listOf(
+        SetClipboard.createHelp(),
+        InjectKeyEvents.createHelp(),
+        TakeScreenshot.createHelp(),
+        IsInteractive.createHelp(),
+        Reboot.createHelp(),
+    )
+
+    println(helpInfo.joinToString("\n", postfix = "\n"))
     return 0
 }
