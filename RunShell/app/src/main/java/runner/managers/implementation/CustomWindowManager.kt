@@ -1,10 +1,7 @@
-package runner.managers
+package runner.managers.implementation
 
-import android.annotation.SuppressLint
 import android.os.IInterface
 import android.util.DisplayMetrics
-import android.view.Display
-import android.view.WindowMetrics
 import java.lang.reflect.Method
 
 /**

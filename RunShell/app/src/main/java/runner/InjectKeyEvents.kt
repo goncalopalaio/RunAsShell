@@ -5,7 +5,7 @@ import android.view.InputDevice
 import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import runner.data.InjectedKeyEvent
-import runner.managers.CustomServiceManager
+import runner.managers.ServiceManager
 
 private const val DEFAULT_DISPLAY_ID = 0
 private const val DEFAULT_INJECT_MODE = 0 // android.os.InputEventInjectionSync.NONE
@@ -30,13 +30,13 @@ object InjectKeyEvents {
             println("$item")
             when (item) {
                 is InjectedKeyEvent.KeyCode -> {
-                    val success = CustomServiceManager.inputManager.inject(
+                    val success = ServiceManager.inputManager.inject(
                         createDefaultKeyEvent(item.keyCode, KeyEvent.ACTION_DOWN),
                         DEFAULT_DISPLAY_ID,
                         DEFAULT_INJECT_MODE
                     )
                     if (success) {
-                        CustomServiceManager.inputManager.inject(
+                        ServiceManager.inputManager.inject(
                             createDefaultKeyEvent(item.keyCode, KeyEvent.ACTION_UP),
                             DEFAULT_DISPLAY_ID,
                             DEFAULT_INJECT_MODE

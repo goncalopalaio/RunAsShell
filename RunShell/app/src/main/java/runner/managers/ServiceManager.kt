@@ -1,22 +1,25 @@
 package runner.managers
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.hardware.input.InputManager
 import android.os.IBinder
 import android.os.IInterface
+import runner.managers.implementation.CustomClipboardManager
+import runner.managers.implementation.CustomInputManager
+import runner.managers.implementation.CustomPowerManager
+import runner.managers.implementation.CustomWindowManager
 import java.lang.reflect.Method
 
 @SuppressLint("DiscouragedPrivateApi", "PrivateApi")
-object CustomServiceManager {
+object ServiceManager {
     private val methodGetService: Method by lazy {
         Class.forName("android.os.ServiceManager")
             .getDeclaredMethod("getService", String::class.java)
     }
 
     val clipboardManager: CustomClipboardManager by lazy {
-        val clipboard = getService("clipboard", "android.content.IClipboard")
-        CustomClipboardManager(clipboard)
+        val manager = getService("clipboard", "android.content.IClipboard")
+        CustomClipboardManager(manager)
     }
 
     val inputManager: CustomInputManager by lazy {
@@ -32,8 +35,13 @@ object CustomServiceManager {
     }
 
     val windowManager: CustomWindowManager by lazy {
-        val clipboard = getService("window", "android.view.IWindowManager")
-        CustomWindowManager(clipboard)
+        val manager = getService("window", "android.view.IWindowManager")
+        CustomWindowManager(manager)
+    }
+
+    val powerManager: CustomPowerManager by lazy {
+        val manager = getService("power", "android.os.IPowerManager")
+        CustomPowerManager(manager)
     }
 
     private fun getService(service: String, type: String): IInterface {

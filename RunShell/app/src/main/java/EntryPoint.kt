@@ -1,4 +1,5 @@
 import runner.InjectKeyEvents
+import runner.IsInteractive
 import runner.SetClipboard
 import runner.TakeScreenshot
 
@@ -20,6 +21,7 @@ fun start(args: Array<String>): Int {
         "clipboard" -> SetClipboard.run(arguments)
         "input" -> InjectKeyEvents.run(arguments)
         "screenshot" -> TakeScreenshot.run(arguments)
+        "interactive" -> IsInteractive.run(arguments)
         "help" -> runHelp()
         else -> {
             println("Unknown program -> $program")
@@ -35,6 +37,10 @@ private fun runHelp(): Int {
     println(SetClipboard.createHelp())
     println()
     println(InjectKeyEvents.createHelp())
+    println()
+    println(TakeScreenshot.createHelp())
+    println()
+    println(IsInteractive.createHelp())
     println()
     return 0
 }

@@ -1,12 +1,12 @@
 package runner
 
-import runner.managers.CustomServiceManager
+import runner.managers.ServiceManager
 
 object SetClipboard {
     fun run(args: List<String>): Int {
         val text = args.getOrElse(0) { "" }
         println("Cola -> $text")
-        CustomServiceManager.clipboardManager.setText(text)
+        ServiceManager.clipboardManager.setText(text)
 
         return 0
     }
