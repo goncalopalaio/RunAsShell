@@ -165,6 +165,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# Crashlytics plugin (for Android Studio and IntelliJ)
+run-as-shell.apk
+
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
