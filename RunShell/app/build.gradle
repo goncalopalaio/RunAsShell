@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.gplio.runshell"
-        minSdk 24
-        targetSdk 33
+        namespace "com.gplio.runshell"
+        minSdk 26
+        targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
     }
 
     buildTypes {

@@ -1,3 +1,5 @@
+import android.os.Build
+import runner.Broadcast
 import runner.InjectKeyEvents
 import runner.IsInteractive
 import runner.Reboot
@@ -24,6 +26,7 @@ fun start(args: Array<String>): Int {
         "screenshot" -> TakeScreenshot.run(arguments)
         "interactive" -> IsInteractive.run()
         "reboot" -> Reboot.run(arguments)
+        "broadcast" -> Broadcast.run(arguments)
         "help" -> runHelp()
         else -> {
             println("Unknown program -> $program")
@@ -34,13 +37,14 @@ fun start(args: Array<String>): Int {
 }
 
 private fun runHelp(): Int {
-    println("Runner v0.2")
+    println("Runner 2.0")
     val helpInfo = listOf(
         SetClipboard.createHelp(),
         InjectKeyEvents.createHelp(),
         TakeScreenshot.createHelp(),
         IsInteractive.createHelp(),
         Reboot.createHelp(),
+        Broadcast.createHelp(),
     )
 
     println(helpInfo.joinToString("\n", postfix = "\n"))
