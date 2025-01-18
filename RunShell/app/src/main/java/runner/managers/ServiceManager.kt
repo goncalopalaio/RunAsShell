@@ -30,7 +30,7 @@ object ServiceManager {
         }
 
         val getInstanceMethod = clazz.getDeclaredMethod("getInstance")
-        val instance = getInstanceMethod.invoke(null) as InputManager
+        val instance = getInstanceMethod.invoke(null) as Any
         CustomInputManager(instance)
     }
 
