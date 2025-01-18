@@ -5,6 +5,7 @@ import runner.IsInteractive
 import runner.Reboot
 import runner.SetClipboard
 import runner.TakeScreenshot
+import runner.Toast
 
 private const val ERROR_NO_PROGRAM = 1000
 private const val ERROR_UNKNOWN_PROGRAM = 1001
@@ -19,6 +20,7 @@ fun start(args: Array<String>): Int {
     }
 
     val arguments = args.drop(1)
+    println("program=$program, arguments=$arguments")
 
     return when (program) {
         "clipboard" -> SetClipboard.run(arguments)
@@ -26,6 +28,7 @@ fun start(args: Array<String>): Int {
         "screenshot" -> TakeScreenshot.run(arguments)
         "interactive" -> IsInteractive.run()
         "reboot" -> Reboot.run(arguments)
+        "toast" -> Toast.run(arguments)
         "broadcast" -> Broadcast.run(arguments)
         "help" -> runHelp()
         else -> {
@@ -44,6 +47,7 @@ private fun runHelp(): Int {
         TakeScreenshot.createHelp(),
         IsInteractive.createHelp(),
         Reboot.createHelp(),
+        Toast.createHelp(),
         Broadcast.createHelp(),
     )
 

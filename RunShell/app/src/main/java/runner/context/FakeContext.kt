@@ -37,23 +37,15 @@ class FakeContext : ContextWrapper(getSystemContext()) {
             @Suppress("DEPRECATION")
             Looper.prepareMainLooper() // Note: activityThreadConstructor.newInstance fails without this.
 
-            println("ACTIVITY_THREAD | starting")
-            // val activityThread = ActivityThread();
             val activityThreadConstructor = ACTIVITY_THREAD_CLASS.getDeclaredConstructor()
-            println("ACTIVITY_THREAD | declared constructor | activityThreadConstructor=$activityThreadConstructor")
             activityThreadConstructor.isAccessible = true
-            println("ACTIVITY_THREAD | accessible constructor | activityThreadConstructor=$activityThreadConstructor")
             val activityThread = activityThreadConstructor.newInstance()
 
-            println("ACTIVITY_THREAD | newInstance | activityThread=$activityThread")
-
-            // ActivityThread.sCurrentActivityThread = activityThread;
             val sCurrentActivityThreadField: Field =
                 ACTIVITY_THREAD_CLASS.getDeclaredField("sCurrentActivityThread")
             sCurrentActivityThreadField.isAccessible = true
             sCurrentActivityThreadField.set(null, activityThread)
 
-            println("ACTIVITY_THREAD | activityThread=$activityThread")
             activityThread
         }
 
@@ -63,7 +55,7 @@ class FakeContext : ContextWrapper(getSystemContext()) {
                     ACTIVITY_THREAD_CLASS.getDeclaredMethod("getSystemContext")
                 getSystemContextMethod.invoke(ACTIVITY_THREAD) as Context
             } catch (exception: Exception) {
-                println("getSystemContext | exception=$exception")
+                println("getSystemContext failed | exception=$exception")
                 null
             }
         }
