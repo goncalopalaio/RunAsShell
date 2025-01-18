@@ -40,7 +40,7 @@ fun start(args: Array<String>): Int {
 }
 
 private fun runHelp(): Int {
-    println("Runner 2.0")
+    println("Runner 0.3")
     val helpInfo = listOf(
         SetClipboard.createHelp(),
         InjectKeyEvents.createHelp(),
