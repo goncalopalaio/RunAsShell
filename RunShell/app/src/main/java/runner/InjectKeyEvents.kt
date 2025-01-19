@@ -11,6 +11,7 @@ private const val DEFAULT_DISPLAY_ID = 0
 private const val DEFAULT_INJECT_MODE = 0 // android.os.InputEventInjectionSync.NONE
 
 object InjectKeyEvents {
+    const val NAME = "input"
 
     fun run(args: List<String>): Int {
         val input = args.getOrElse(0) { "" }
@@ -24,7 +25,7 @@ object InjectKeyEvents {
                 InjectedKeyEvent.KeyCode(keyCode)
             }
         }
-        println("Input -> $items")
+        println("$NAME -> $items")
 
         for (item in items) {
             println("$item")
@@ -53,9 +54,9 @@ object InjectKeyEvents {
 
     fun createHelp(): String = """
         # Writing KEYCODE_1, KEYCODE_2, KEYCODE_3
-        escreve "8-9-10"
+        $NAME "8-9-10"
         # Writing KEYCODE_1, Sleep for 100ms, KEYCODE_2, KEYCODE_3
-        escreve "8-SLEEP111-9-10"
+        $NAME "8-SLEEP111-9-10"
     """.trimIndent()
 
     private fun createDefaultKeyEvent(keyCode: Int, action: Int): KeyEvent {

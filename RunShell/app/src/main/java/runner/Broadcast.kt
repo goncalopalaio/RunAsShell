@@ -7,10 +7,10 @@ import android.content.Context.RECEIVER_EXPORTED
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
-import android.widget.Toast
 import runner.context.FakeContext
 
 object Broadcast {
+    const val NAME = "broadcast"
 
     /**
      * Experimental - Not working.
@@ -28,7 +28,7 @@ object Broadcast {
         }
 
         FakeContext.fakeContext.sendBroadcast(intent)
-        println("broadcast requested | intent=$intent")
+        println("$NAME | intent=$intent")
 
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
@@ -44,12 +44,13 @@ object Broadcast {
         } else {
             FakeContext.fakeContext.registerReceiver(receiver, filter, null, null)
         }
-        println("Sleeping")
+        println("$NAME | Sleeping")
         Thread.sleep(10_000)
         return 0
     }
 
     fun createHelp(): String = """
-        broadcast
+        # $NAME
+        # Experimental - do not use
     """.trimIndent()
 }

@@ -1,4 +1,3 @@
-import android.os.Build
 import runner.Broadcast
 import runner.InjectKeyEvents
 import runner.IsInteractive
@@ -22,14 +21,17 @@ fun start(args: Array<String>): Int {
     val arguments = args.drop(1)
     println("program=$program, arguments=$arguments")
 
+    // TODO - Implement interface for each command
+    // TODO - Review logging on each command, add tag with the name of the command to each log
+    // TODO - Add command class for help
     return when (program) {
-        "clipboard" -> SetClipboard.run(arguments)
-        "input" -> InjectKeyEvents.run(arguments)
-        "screenshot" -> TakeScreenshot.run(arguments)
-        "interactive" -> IsInteractive.run()
-        "reboot" -> Reboot.run(arguments)
-        "toast" -> Toast.run(arguments)
-        "broadcast" -> Broadcast.run(arguments)
+        SetClipboard.NAME -> SetClipboard.run(arguments)
+        InjectKeyEvents.NAME -> InjectKeyEvents.run(arguments)
+        TakeScreenshot.NAME -> TakeScreenshot.run(arguments)
+        IsInteractive.NAME -> IsInteractive.run()
+        Reboot.NAME -> Reboot.run(arguments)
+        Toast.NAME -> Toast.run(arguments)
+        Broadcast.NAME -> Broadcast.run(arguments)
         "help" -> runHelp()
         else -> {
             println("Unknown program -> $program")
@@ -51,6 +53,6 @@ private fun runHelp(): Int {
         Broadcast.createHelp(),
     )
 
-    println(helpInfo.joinToString("\n", postfix = "\n"))
+    println(helpInfo.joinToString("\n\n--------\n", prefix = "\n", postfix = "\n"))
     return 0
 }

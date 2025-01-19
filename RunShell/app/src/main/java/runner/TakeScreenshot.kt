@@ -5,19 +5,21 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import android.graphics.Rect
 import android.os.Environment
-import android.view.PixelCopy
 import java.io.File
 import kotlin.system.measureTimeMillis
 
-
+/**
+ * Experimental - Not working.
+ */
 object TakeScreenshot {
+    const val NAME = "screenshot"
 
     @Suppress("UNUSED_PARAMETER")
     fun run(args: List<String>): Int {
         val startScreenshotTimeMs = System.currentTimeMillis()
         val bitmap = screenshot()
         val screenshotTimeMs = System.currentTimeMillis() - startScreenshotTimeMs
-        println("bitmap=$bitmap, width=${bitmap?.width}, height=${bitmap?.height}, screenshotTimeMs=$screenshotTimeMs")
+        println("$NAME | bitmap=$bitmap, width=${bitmap?.width}, height=${bitmap?.height}, screenshotTimeMs=$screenshotTimeMs")
         if (bitmap == null) return 1
 
         val file =
@@ -31,11 +33,14 @@ object TakeScreenshot {
             bitmap.recycle()
         }
 
-        println("file=$file, screenshotTimeMs=$screenshotTimeMs, writeTimeMs=$writeTimeMs, recycleTimeMs=$recycleTimeMs")
+        println("$NAME | file=$file, screenshotTimeMs=$screenshotTimeMs, writeTimeMs=$writeTimeMs, recycleTimeMs=$recycleTimeMs")
         return 0
     }
 
-    fun createHelp(): String = """""".trimIndent()
+    fun createHelp(): String = """
+        # $NAME
+        # Experimental - do not use
+    """.trimIndent()
 
     @Throws(Exception::class)
     fun screenshot(): Bitmap? {
