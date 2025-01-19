@@ -4,16 +4,6 @@ Suite of programs meant to be run in an Android device through app_process / she
 
 These are the current supported commands:
 
-## Clipboard
-
-Sets text to your android device clipboard and pastes it into the focused field.
-
-```bash
-adb push run-as-shell.apk /data/local/tmp/ \
-&& adb shell CLASSPATH=/data/local/tmp/run-as-shell.apk app_process / Runner clipboard "https://google.com/" \
-&& adb shell input keyevent 279
-```
-
 ## Input
 
 Injects key events into the device.
