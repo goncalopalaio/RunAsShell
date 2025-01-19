@@ -2,7 +2,7 @@
 
 Suite of programs meant to be run in an Android device through app_process / shell.
 
-Currently there's two programs:
+These are the current supported commands:
 
 ## Clipboard
 
